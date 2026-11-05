@@ -13,9 +13,8 @@ from torchvision.io import decode_image
 
 # datasets
 datafolder = "C:/Users/mchan/Lagoon_Public_Art/Photos/"
-burano_data = datafolder + "Burano_Images"
-mazzorbo_data = datafolder + "Mazzorbo_Images"
-from training_data.csv import *
+coats_of_arms_training = datafolder + "Coats_of_Arms"
+# mazzorbo_data = datafolder + "Mazzorbo_Images"
 
 # labelling
 labels_map = {
@@ -27,7 +26,7 @@ labels_map = {
 	5: "Fragment"
 }
 
-print(burano_data)
+print(np.shape(coats_of_arms_training))
 
 kill
 # test visuals
