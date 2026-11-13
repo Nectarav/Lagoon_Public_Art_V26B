@@ -6,6 +6,9 @@ from PIL import Image
 import joblib
 import io
 
+# to open run:
+# streamlit run artifact_classification.py
+
 # load the model
 model_data = joblib.load('artifact_classifier_model.pkl')
 
