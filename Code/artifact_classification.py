@@ -8,11 +8,13 @@ import io
 
 # to open run:
 # streamlit run artifact_classification.py
+# in terminal
 
 # load the model
-model_data = joblib.load('artifact_classifier_model.pkl')
+resnet_num = 152
+model_data = joblib.load(f'artifact_classifier_model_resnet{resnet_num}.pkl')
 
-model = models.resnet18(pretrained = False)
+model = models.resnet152(pretrained = False)
 
 model.fc = torch.nn.Linear(model.fc.in_features, len(model_data['class_to_idx']))
 model.load_state_dict(model_data['model_state_dict'])
@@ -23,10 +25,10 @@ model.eval()
 idx_to_class = {v: k for k, v in model_data['class_to_idx'].items()}
 
 transform = transforms.Compose([
-    transforms.Resize((3008,2000)),
+    transforms.Resize((400,400)),
     transforms.ToTensor(),
-    transforms.Normalize([0.485, 0.456, 0.406],
-                         [0.229, 0.224, 0.225])
+    # transforms.Normalize([0.485, 0.456, 0.406],
+    #                      [0.229, 0.224, 0.225])
 ])
 
 st.title('Artifact Classifier')
