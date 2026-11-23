@@ -11,10 +11,10 @@ import io
 # in terminal
 
 # load the model
-resnet_num = 152
-model_data = joblib.load(f'artifact_classifier_model_resnet{resnet_num}.pkl')
+resnet_num = 50
+model_data = joblib.load(f'condition_assessment_model_resnet{resnet_num}.pkl')
 
-model = models.resnet152(pretrained = False)
+model = models.resnet50(pretrained = False)
 
 model.fc = torch.nn.Linear(model.fc.in_features, len(model_data['class_to_idx']))
 model.load_state_dict(model_data['model_state_dict'])
